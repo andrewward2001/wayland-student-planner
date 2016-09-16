@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>WHS Student Utility</title>
+
+    <script type="text/javascript" src="./js/jquery-3.1.0.min.js"></script>
+    <script type="text/javascript" src="./js/js.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="./css/base.css">
+    <link rel="stylesheet" type="text/css" href="./css/font-awesome.min.css">
+  </head>
+  <body>
+    <nav>
+        <ul>
+            <li><a href="#" class="active">Home</a></li>
+            <li><a href="./signin.html">Sign in</a></li>
+        </ul>
+    </nav>
+    <footer>
+        <div class="tooltip">
+            About
+            <span class="tooltiptext">WHS Student Planner v0.1</span>
+        </div>
+    </footer>
+    <script>
+        if(!localStorage.getItem("firstName")) {
+            document.location.href = "./signin.html";
+        }
+    </script>
+  </body>
+</html>

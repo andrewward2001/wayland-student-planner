@@ -4,65 +4,44 @@
     <meta charset="UTF-8">
     <title>WHS Student Utility</title>
 
-    <script type="text/javascript" src="./js/jquery-3.1.0.min.js"></script>
 
-    <link rel="stylesheet" type="text/css" href="./css/base.css">
     <link rel="stylesheet" type="text/css" href="./css/font-awesome.min.css">
+    <link href="node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="./css/base.css">
+
   </head>
   <body>
-    <nav>
-        <ul>
-            <li><a href="#" class="active">Home</a></li>
-            <li><a href="./signin.html">Sign in</a></li>
-        </ul>
-    </nav>
-    <footer>
-        <div class="tooltip">
-            About
-            <span class="tooltiptext">WHS Student Planner v0.1</span>
-        </div>
-        <!-- <div class="md-select">
-            <label for="ul-id"><button type="button" class="ng-binding">Letter Day</button></label>
-            <ul role="listbox" id="ul-id" class="md-whiteframe-z1" aria-activedescendant="dayA" name="ul-id">
-                <li role="option" id="dayA" class="ng-binding ng-scope active" tabindex="-1" aria-selected="true">A Day</li>
-            </ul>
-        </div> -->
-        <select>
-            <option value="a">A Day</option>
-            <option value="b">B Day</option>
-            <option value="c">C Day</option>
-            <option value="d">D Day</option>
-            <option value="e">E Day</option>
-            <option value="f">F Day</option>
-            <option value="g">G Day</option>
-            <option value="h">H Day</option>
-        </select>
-        <select>
-            <option value="b1">Bell 1</option>
-            <option value="b2">Bell 2</option>
-            <option value="b3">Bell 3</option>
-        </select>
-        <select>
-            <option value="l1">Lunch 1</option>
-            <option value="l2">Lunch 2</option>
-            <option value="l3">Lunch 3</option>
-        </select>
-    </footer>
+    <ul class="nav nav-tabs">
+    	<li class="active"><a href="#home" data-toggle="tab" aria-expanded="true">Home</a></li>
+      <li class=""><a href="#signin" data-toggle="tab" aria-expanded="false">Sign In</a></li>
+    </ul>
+    <div class="tab-content">
+      <div id="home" class="tab-pane fade active in">
+        <p>heyy</p>
+      </div>
+      <div id="signin" class="tab-pane fade in">
+        <p>signin</p>
+      </div>
+    </div>
     <script>
-        if(!localStorage.getItem("firstName")) {
-            document.location.href = "./signin.html";
-        }
+      window.$ = window.jQuery = require('./node_modules/jquery/dist/jquery.min');
 
-        $('.md-select').on('click', function(){
-          $(this).toggleClass('active')
-        })
+      if(!localStorage.getItem("firstName")) {
+        document.location.href = "./signin.html";
+      }
 
-        $('.md-select ul li').on('click', function() {
-          var v = $(this).text();
-          $('.md-select ul li').not($(this)).removeClass('active');
-          $(this).addClass('active');
-          $('.md-select label button').text(v)
-        })
+      $('.md-select').on('click', function(){
+        $(this).toggleClass('active')
+      })
+
+      $('.md-select ul li').on('click', function() {
+        var v = $(this).text();
+        $('.md-select ul li').not($(this)).removeClass('active');
+        $(this).addClass('active');
+        $('.md-select label button').text(v)
+      })
     </script>
+    <script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="./js/base.js"></script>
   </body>
 </html>

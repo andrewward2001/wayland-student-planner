@@ -10,10 +10,7 @@ function planner() {
         width: 1000,
         minWidth: 1000,
         height: 600,
-        minHeight: 600,
-        webPreferences: {
-            nodeIntegration: false
-        }
+        minHeight: 600
     });
     mainWindow.loadURL(`file://${__dirname}/index.html`);
     mainWindow.setMenu(null);

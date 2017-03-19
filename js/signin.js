@@ -3,6 +3,9 @@ const store = new Store({
   configName: 'user-preferences'
 });
 
+$("#firstName").val(store.get('userInfo').fname)
+$("#lastName").val(store.get('userInfo').lname)
+
 $("#firstName").on("change paste keyup", function () {
   $("#save-status").html("Saving...")
   var fname = $(this).val()

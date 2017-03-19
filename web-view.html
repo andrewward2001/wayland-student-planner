@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>WHS Student Utility</title>
+
+
+    <link rel="stylesheet" type="text/css" href="./css/font-awesome.min.css">
+    <link href="node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="./css/base.css">
+
+  </head>
+  <body style="height: 100%;">
+    <ul class="nav nav-tabs">
+    	<li class=""><a href="index.html#home">Home</a></li>
+      <li class=""><a href="index.html#wspn">WSPN »</a></li>
+      <li class="active"><a href="#">WSPN Article</a></li>
+      <li class=""><a href="index.html#profile">My Profile</a></li>
+    </ul>
+    <div class="article-view">
+
+    </div>
+    <script>
+      window.$ = window.jQuery = require('./node_modules/jquery/dist/jquery.min');
+
+      if(!localStorage.getItem("firstName")) {
+        document.location.href = "./signin.html";
+      }
+
+      $('.md-select').on('click', function(){
+        $(this).toggleClass('active')
+      })
+
+      $('.md-select ul li').on('click', function() {
+        var v = $(this).text();
+        $('.md-select ul li').not($(this)).removeClass('active');
+        $(this).addClass('active');
+        $('.md-select label button').text(v)
+      })
+    </script>
+    <script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="./js/web-view.js"></script>
+  </body>
+</html>

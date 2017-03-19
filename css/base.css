@@ -60,6 +60,14 @@ body {
   background-color: #444;
 }
 
+.img-circle {
+  object-fit: cover;
+}
+
+.article-view {
+  height: calc(100% - 45px);
+}
+
 /* BEGIN: dropdown css: https://codepen.io/LukyVj/pen/meJqor */
 .md-select {
   display: block;

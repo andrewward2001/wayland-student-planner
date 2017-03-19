@@ -8,20 +8,24 @@ const store = new Store({
   configName: 'user-preferences',
   defaults: {
     windowBounds: {
-      width: 1000,
+      width: 1200,
       height: 600,
       x: 100,
       y: 100
     },
     userInfo: {
       fname: '',
-      lname: ''
+      lname: '',
+      grade: ''
     }
   }
 });
 
 app.on("ready", function () {
     mainWindow = new BrowserWindow(store.get('windowBounds'));
+
+    // ensures that a default copy is saved
+    store.set('windowBounds', {width: 1250, height: 600, x: 100, y: 100})
 
     function saveWindowBounds() {
       store.set('windowBounds', mainWindow.getBounds());

@@ -3,22 +3,69 @@ const store = new Store({
   configName: 'user-preferences',
   defaults: {
     windowBounds: {
-      width: 1000,
+      width: 1200,
       height: 600,
       x: 100,
       y: 100
     },
     userInfo: {
       fname: '',
-      lname: ''
+      lname: '',
+      grade: ''
     }
   }
 });
 
-console.log(store.get('windowBounds'))
+var actTab = window.location.hash;
+var actTab = actTab.substring(actTab.indexOf("#") + 1);
 
-console.log(store.get('userInfo'))
+var { fname, lname } = store.get('userInfo')
 
-if(typeof store === "undefined") {
-  console.log("rip")
+$.ajax({
+  type: "GET",
+  url: "http://waylandstudentpress.com/feed/",
+  dataType: "xml",
+  success: function(xml) {
+    var lim = 3
+
+    $(xml).find("item").each(function (index) {
+      if(index < lim) {
+        var title = $(this).find("title").text()
+        var link = $(this).find("link").text()
+        var img = $(this).find("description").text()
+        img = $(img).find("img").attr('src')
+        var $cont = $("[data-article-num='"+index+"']")
+        $cont.find("img").attr('src', img);
+        $cont.find("h2").html(title);
+        $cont.find("a").attr('href', link);
+      }
+    })
+  }
+})
+
+function updateUserInfo() {
+  fname = store.get('userInfo').fname
+  lname = store.get('userInfo').lname
 }
+
+$(".firstName").html(fname)
+
+$("span[data-fill-val]").each(function(index, el) {
+  var data = $(this).data('fill-val')
+  var data = data.split(",")
+  var info = store.get(data[0])
+  $(this).html(info[data[1]])
+});
+
+if(actTab.length){
+  $(".tab-pane.active").removeClass('active')
+  $(".nav-tabs li.active").removeClass('active')
+  $(".tab-pane#"+actTab).addClass('active')
+  $(".nav-tabs li a[href='#"+actTab+"']").parents("li").addClass('active')
+}
+
+$("[data-view='custo']").on("click", function (e) {
+  e.preventDefault()
+  var link = $(this).attr("href")
+  window.location.replace("web-view.html#"+link)
+})

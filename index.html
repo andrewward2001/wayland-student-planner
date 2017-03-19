@@ -12,15 +12,45 @@
   </head>
   <body>
     <ul class="nav nav-tabs">
-    	<li class="active"><a href="#home" data-toggle="tab" aria-expanded="true">Home</a></li>
-      <li class=""><a href="#signin" data-toggle="tab" aria-expanded="false">Sign In</a></li>
+    	<li class="active"><a href="#home" data-toggle="tab">Home</a></li>
+      <li class=""><a href="#wspn" data-toggle="tab">WSPN</a></li>
+      <li class=""><a href="#profile" data-toggle="tab">My Profile</a></li>
     </ul>
     <div class="tab-content">
       <div id="home" class="tab-pane fade active in">
-        <p>heyy</p>
+        <div class="container">
+          <h2>Welcome back, <span class="firstName"></span>!</h2>
+        </div>
       </div>
-      <div id="signin" class="tab-pane fade in">
-        <p>signin</p>
+      <div id="wspn" class="tab-pane fade in">
+        <div class="container">
+          <h2>WSPN News Feed</h2>
+          <a href="#wspn" onclick="location.reload()">Refresh</a>
+          <div class="row" data-pln-role="wspnFeed">
+            <div class="col-lg-4" style="text-align: center" data-article-num="0">
+              <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
+              <h2>Loading...</h2>
+              <p><a class="btn btn-default" href="#" role="button" data-view="custo">Continue Reading »</a></p>
+            </div>
+            <div class="col-lg-4" style="text-align: center" data-article-num="1">
+              <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
+              <h2>Loading...</h2>
+              <p><a class="btn btn-default" href="#" role="button" data-view="custo">Continue Reading »</a></p>
+            </div>
+            <div class="col-lg-4" style="text-align: center" data-article-num="2">
+              <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
+              <h2>Loading...</h2>
+              <p><a class="btn btn-default" href="#" role="button" data-view="custo">Continue Reading »</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="profile" class="tab-pane fade in">
+        <div class="container">
+          <h2>My Profile</h2>
+          <h4><span data-fill-val="userInfo,fname">(unknown)</span> <span data-fill-val="userInfo,lname">(unknown)</span></h4>
+          <h4>Grade: <span data-fill-val="userInfo,grade">(unknown)</span></h4>
+        </div>
       </div>
     </div>
     <script>

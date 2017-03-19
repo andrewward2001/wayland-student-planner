@@ -1,41 +1,31 @@
 <!DOCTYPE html>
-<html style="background-image: url('./img/hs.jpg'); background-size: cover; background-position: center;">
+<html>
     <head>
         <meta charset="UTF-8">
-        <title>Sign in</title>
+        <title>Setup</title>
 
-        <script type="text/javascript" src="./js/jquery-3.1.0.min.js"></script>
-
+        <link rel="stylesheet" type="text/css" href="./css/font-awesome.min.css">
+        <link href="node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="./css/base.css">
     </head>
     <body>
-        <div class="signin">
-            <h1>Welcome!</h1>
-            <h3>Please enter some extra information...</h3>
-            <div class="group">
-                <input type="text" id="firstName" required>
-                <span class="highlight"></span>
-                <span class="bar"></span>
-                <label>First Name</label>
-            </div>
-            <div class="group">
-                <input type="text" id="lastName" required>
-                <span class="highlight"></span>
-                <span class="bar"></span>
-                <label>Last Name</label>
-            </div>
-            <button id="submitSetup" style="margin: 0;">Done</button>
-        </div>
-        <script>
-            $("#submitSetup").click(function() {
-                var firstName = $("#firstName").val();
-                var lastName = $("#lastName").val();
-
-                localStorage.setItem("firstName", firstName);
-                localStorage.setItem("lastName", lastName);
-
-                window.location.href = "./index.html";
-            });
-        </script>
+      <div class="container">
+        <form class="form-signin">
+          <h2 class="form-signin-heading">Looks like this is your first time. Let's customize!</h2>
+          <label for="firstName" class="sr-only">First Name</label>
+          <input type="text" id="firstName" class="form-control" placeholder="First Name" required="" autofocus="">
+          <br />
+          <label for="firstName" class="sr-only">Last Name</label>
+          <input type="text" id="lastName" class="form-control" placeholder="Last Name" required="">
+          <br />
+          <span class="text-success" id="save-status"></span>
+          <button class="btn btn-lg btn-primary btn-block" type="submit" id="finishSetup" disabled="">Done</button>
+        </form>
+      </div>
+      <script>
+        window.$ = window.jQuery = require('./node_modules/jquery/dist/jquery.min');
+      </script>
+      <script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+      <script src="./js/signin.js"></script>
     </body>
 </html>

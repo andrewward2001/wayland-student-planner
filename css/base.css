@@ -20,6 +20,7 @@ html {
 .nav-tabs {
   border-bottom: none;
   background-color: #212121;
+  -webkit-app-region: drag;
 }
 
 .nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover {
@@ -33,6 +34,15 @@ html {
 .nav-tabs>li>a {
   border: none;
   color: #ddd;
+  -webkit-app-region: no-drag;
+}
+
+.nav-tabs>li.pull-right {
+  font-size: 2rem;
+}
+
+.nav-tabs>li.pull-right>a {
+  padding: .6rem 1.4rem;
 }
 
 .nav-tabs>li>a:hover {
@@ -66,6 +76,14 @@ body {
 
 .article-view {
   height: calc(100% - 45px);
+}
+
+.drag-region {
+  width: 100%;
+  position: fixed;
+  height: 40px;
+  -webkit-app-region: drag;
+  z-index: 9999;
 }
 
 /* BEGIN: dropdown css: https://codepen.io/LukyVj/pen/meJqor */

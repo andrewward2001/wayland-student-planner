@@ -1,11 +1,20 @@
 const Store = require("./js/store.js");
 const store = new Store({
-  configName: 'user-preferences'
+  configName: 'user-prefs',
+  defaults: {
+    userInfo: {
+      fname: '',
+      lname: '',
+      grade: ''
+    }
+  }
 });
 
 $("#firstName").val(store.get('userInfo').fname)
 $("#lastName").val(store.get('userInfo').lname)
-$("#grade").val(store.get('userInfo').grade)
+if($("#grade").val() != "") {
+  $("#grade").val(store.get('userInfo').grade)
+}
 
 $("#firstName").on("change paste keyup", function () {
   $("#save-status").html("Saving...")

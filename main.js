@@ -5,14 +5,22 @@ const Store = require("./js/store.js");
 let mainWindow;
 
 const store = new Store({
-  configName: 'user-preferences',
+  configName: 'window-state',
   defaults: {
     windowBounds: {
       width: 1200,
       height: 600,
       x: 100,
-      y: 100
-    },
+      y: 100,
+      frame: false,
+      show: false
+    }
+  }
+});
+
+const storeUserPrefs = new Store({
+  configName: 'user-prefs',
+  defaults: {
     userInfo: {
       fname: '',
       lname: '',
@@ -24,17 +32,14 @@ const store = new Store({
 app.on("ready", function () {
     mainWindow = new BrowserWindow(store.get('windowBounds'));
 
-    // ensures that a default copy is saved
-    store.set('windowBounds', {width: 1250, height: 600, x: 100, y: 100})
-
     function saveWindowBounds() {
-      store.set('windowBounds', mainWindow.getBounds());
+      store.set('windowBounds', {width: mainWindow.getBounds().width, height: mainWindow.getBounds().height, x: mainWindow.getBounds().x, y: mainWindow.getBounds().y, frame: false, show: false});
     }
 
     mainWindow.on('resize', saveWindowBounds);
     mainWindow.on('move', saveWindowBounds);
 
-    if(store.get('userInfo').fname != "" && store.get('userInfo').lname != "") {
+    if(storeUserPrefs.get('userInfo').fname != "" && storeUserPrefs.get('userInfo').lname != "") {
       mainWindow.loadURL(`file://${__dirname}/index.html`);
     } else {
       mainWindow.loadURL(`file://${__dirname}/signin.html`);
@@ -47,4 +52,7 @@ app.on("ready", function () {
         e.preventDefault();
         app.shell.openExternal(url);
     });
+    mainWindow.once('ready-to-show', () => {
+      mainWindow.show()
+    })
 });

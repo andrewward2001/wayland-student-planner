@@ -1,20 +1,9 @@
 const Store = require("./js/store.js");
 const store = new Store({
-  configName: 'user-preferences',
-  defaults: {
-    windowBounds: {
-      width: 1200,
-      height: 600,
-      x: 100,
-      y: 100
-    },
-    userInfo: {
-      fname: '',
-      lname: '',
-      grade: ''
-    }
-  }
+  configName: 'user-prefs'
 });
+
+const remote = require('electron').remote
 
 var actTab = window.location.hash;
 var actTab = actTab.substring(actTab.indexOf("#") + 1);
@@ -43,7 +32,9 @@ $.ajax({
   }
 })
 
-function updateUserInfo() {
+console.log(store.get('userInfo'))
+
+function getUserInfo() {
   fname = store.get('userInfo').fname
   lname = store.get('userInfo').lname
 }
@@ -68,4 +59,8 @@ $("[data-view='custo']").on("click", function (e) {
   e.preventDefault()
   var link = $(this).attr("href")
   window.location.replace("web-view.html#"+link)
+})
+
+$("#close").on("click", () => {
+  remote.getCurrentWindow().close()
 })

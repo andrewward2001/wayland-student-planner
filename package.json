@@ -6,7 +6,7 @@
   "scripts": {
     "start": "electron .",
 	"pack": "build --dir",
-	"dist": "build --x64"
+	"dist": "build --x64",
 	"dist-mac": "build --x64 --mac"
   },
   "repository": {

@@ -9,6 +9,10 @@ var actTab = window.location.hash;
 var actTab = actTab.substring(actTab.indexOf("#") + 1);
 
 var { fname, lname } = store.get('userInfo')
+console.log(fname)
+if(fname == "" && lname == "") {
+
+}
 
 $.ajax({
   type: "GET",

@@ -5,9 +5,9 @@
   "main": "main.js",
   "scripts": {
     "start": "electron .",
-	"pack": "build --dir",
-	"dist": "build --x64",
-	"dist-mac": "build --x64 --mac"
+    "pack": "build --dir",
+    "dist": "build --x64",
+    "distM": "build --x64 --mac"
   },
   "repository": {
     "type": "git",
@@ -26,12 +26,13 @@
   "dependencies": {
     "bootstrap": "^3.3.7",
     "fs": "0.0.1-security",
-    "jquery": "^3.2.0"
+    "jquery": "^3.2.0",
+    "path": "^0.12.7"
   },
   "build": {
-	"appId": "io.whsplanner",
-	"mac": {
-	  "category": "io.whsplanner.utility"
-	}
+    "appId": "io.whsplanner",
+    "mac": {
+      "category": "io.whsplanner.utility"
+    }
   }
 }

@@ -1,6 +1,7 @@
 const {app} = require('electron');
 const {BrowserWindow} = require('electron');
 const Store = require("./js/store.js");
+const path = require("path");
 
 let mainWindow;
 
@@ -39,12 +40,7 @@ app.on("ready", function () {
     mainWindow.on('resize', saveWindowBounds);
     mainWindow.on('move', saveWindowBounds);
 
-    if(storeUserPrefs.get('userInfo').fname != "" && storeUserPrefs.get('userInfo').lname != "") {
-      mainWindow.loadURL(`file://${__dirname}/index.html`);
-    } else {
-      mainWindow.loadURL(`file://${__dirname}/signin.html`);
-    }
-
+    mainWindow.loadURL('file://' + path.join(__dirname,'index.html'));
 
     mainWindow.setMenu(null);
     mainWindow.webContents.openDevTools()

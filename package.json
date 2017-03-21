@@ -1,6 +1,6 @@
 {
   "name": "Wayland-Student-Planner",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "A multiplatform planner and schedule utility for WHS Students",
   "main": "main.js",
   "scripts": {

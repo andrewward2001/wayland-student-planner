@@ -14,7 +14,8 @@ const store = new Store({
       x: 100,
       y: 100,
       frame: false
-    }
+    },
+    devTools: false
   }
 });
 
@@ -48,7 +49,9 @@ app.on("ready", function () {
     mainWindow.loadURL('file://' + path.join(__dirname,'index.html'));
 
     mainWindow.setMenu(null);
-    mainWindow.webContents.openDevTools()
+    if(store.get('devTools') == true) {
+      mainWindow.webContents.openDevTools()
+    }
     mainWindow.webContents.on('new-window', function(e, url) {
         e.preventDefault();
         app.shell.openExternal(url);

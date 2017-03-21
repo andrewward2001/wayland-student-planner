@@ -8,11 +8,11 @@ const remote = require('electron').remote
 var actTab = window.location.hash;
 var actTab = actTab.substring(actTab.indexOf("#") + 1);
 
-var { fname, lname } = store.get('userInfo')
-console.log(fname)
-if(fname == "" && lname == "") {
-
+if(store.get('userInfo').fname == "") {
+  window.location.replace("signin.html")
 }
+
+var { fname, lname } = store.get('userInfo')
 
 $.ajax({
   type: "GET",

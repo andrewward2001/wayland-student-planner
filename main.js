@@ -13,8 +13,7 @@ const store = new Store({
       height: 600,
       x: 100,
       y: 100,
-      frame: false,
-      show: false
+      frame: false
     }
   }
 });
@@ -26,7 +25,8 @@ const storeUserPrefs = new Store({
       fname: '',
       lname: '',
       grade: ''
-    }
+    },
+    hasRun: false
   }
 });
 
@@ -34,7 +34,12 @@ app.on("ready", function () {
     mainWindow = new BrowserWindow(store.get('windowBounds'));
 
     function saveWindowBounds() {
-      store.set('windowBounds', {width: mainWindow.getBounds().width, height: mainWindow.getBounds().height, x: mainWindow.getBounds().x, y: mainWindow.getBounds().y, frame: false, show: false});
+      store.set('windowBounds', {width: mainWindow.getBounds().width, height: mainWindow.getBounds().height, x: mainWindow.getBounds().x, y: mainWindow.getBounds().y, frame: false});
+    }
+
+    storeUserPrefs.set('hasRun', false)
+    if(storeUserPrefs.get('hasRun') == false) {
+      storeUserPrefs.set('hasRun', true)
     }
 
     mainWindow.on('resize', saveWindowBounds);
@@ -48,7 +53,4 @@ app.on("ready", function () {
         e.preventDefault();
         app.shell.openExternal(url);
     });
-    mainWindow.once('ready-to-show', () => {
-      mainWindow.show()
-    })
 });

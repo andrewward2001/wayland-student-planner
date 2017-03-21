@@ -57,10 +57,6 @@
     <script>
       window.$ = window.jQuery = require('./node_modules/jquery/dist/jquery.min');
 
-      if(!localStorage.getItem("firstName")) {
-        document.location.href = "./signin.html";
-      }
-
       $('.md-select').on('click', function(){
         $(this).toggleClass('active')
       })

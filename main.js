@@ -14,8 +14,7 @@ const store = new Store({
       x: 100,
       y: 100,
       frame: false
-    },
-    devTools: false
+    }
   }
 });
 
@@ -27,7 +26,11 @@ const storeUserPrefs = new Store({
       lname: '',
       grade: ''
     },
-    hasRun: false
+    hasRun: false,
+    externalLinks: false,
+    persistWindowSize: true,
+    persistWindowPos: true,
+    devTools: false
   }
 });
 
@@ -43,13 +46,13 @@ app.on("ready", function () {
       storeUserPrefs.set('hasRun', true)
     }
 
-    mainWindow.on('resize', saveWindowBounds);
-    mainWindow.on('move', saveWindowBounds);
+    if(storeUserPrefs.get('persistWindowSize')) mainWindow.on('resize', saveWindowBounds);
+    if(storeUserPrefs.get('persistWindowPos')) mainWindow.on('move', saveWindowBounds);
 
     mainWindow.loadURL('file://' + path.join(__dirname,'index.html'));
 
     mainWindow.setMenu(null);
-    if(store.get('devTools') == true) {
+    if(storeUserPrefs.get('devTools')) {
       mainWindow.webContents.openDevTools()
     }
     mainWindow.webContents.on('new-window', function(e, url) {

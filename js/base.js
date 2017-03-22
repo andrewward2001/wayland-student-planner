@@ -62,7 +62,7 @@ if(actTab.length){
 $("[data-view='custo']").on("click", function (e) {
   e.preventDefault()
   var link = $(this).attr("href")
-  window.location.replace("web-view.html#"+link)
+  store.get('externalLinks') ? remote.shell.openExternal(link) : window.location.replace("web-view.html#"+link)
 })
 
 $("#close").on("click", () => {

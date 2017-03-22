@@ -11,24 +11,47 @@
     <body>
       <div class="drag-region"></div>
       <div class="container">
-        <form class="form-signin">
-          <h2 class="form-signin-heading">Looks like this is your first time. Let's customize!</h2>
-          <label for="firstName" class="sr-only">First Name</label>
-          <input type="text" id="firstName" class="form-control" placeholder="First Name" required="" autofocus="">
-          <br />
-          <label for="firstName" class="sr-only">Last Name</label>
-          <input type="text" id="lastName" class="form-control" placeholder="Last Name" required="">
-          <br />
-          <select class="form-control" id="grade">
-            <option value="Freshman">Freshman</option>
-            <option value="Sophomore">Sophomore</option>
-            <option value="Junior">Junior</option>
-            <option value="Senior">Senior</option>
-          </select>
-          <br />
-          <span class="text-success" id="save-status"></span>
-          <button class="btn btn-lg btn-primary btn-block" type="submit" id="finishSetup" disabled="">Done</button>
-        </form>
+        <div class="tab-content">
+          <div id="init" class="tab-pane fade active in">
+            <form class="form-signin">
+              <h2 class="form-signin-heading">Looks like this is your first time. Let's customize!</h2>
+              <label for="firstName" class="sr-only">First Name</label>
+              <input type="text" id="firstName" class="form-control" placeholder="First Name" required="" autofocus="">
+              <br />
+              <label for="firstName" class="sr-only">Last Name</label>
+              <input type="text" id="lastName" class="form-control" placeholder="Last Name" required="">
+              <br />
+              <select class="form-control" id="grade">
+                <option value="Freshman">Freshman</option>
+                <option value="Sophomore">Sophomore</option>
+                <option value="Junior">Junior</option>
+                <option value="Senior">Senior</option>
+              </select>
+              <br />
+              <input type="checkbox" aria-label="..." id="externalLinks"> Open links in a web browser
+              <br />
+              <span class="text-success" id="save-status"></span>
+              <a class="btn btn-lg btn-primary btn-block" href="#appSettings" data-toggle="tab" id="toAppSettings" disabled="">Next</a>
+            </form>
+          </div>
+          <div id="appSettings" class="tab-pane fade in">
+            <form class="form-signin">
+              <h2 class="form-signin-heading">Just a little more...</h2>
+              <span class="text-info" id="save-status">Most people will want to leave these as-is.</span>
+              <br />
+              <span class="text-warning" id="save-status">These all require a restart.</span>
+              <br />
+              <input type="checkbox" aria-label="..." id="persistWindowSize"> Persistent window size
+              <br />
+              <input type="checkbox" aria-label="..." id="persistWindowPos"> Persistent window position
+              <br />
+              <input type="checkbox" aria-label="..." id="showDevTools"> Show dev tools
+              <br />
+              <span class="text-success" id="save-status"></span>
+              <a class="btn btn-lg btn-primary btn-block" href="index.html">Finish</a>
+            </form>
+          </div>
+        </div>
       </div>
       <script>
         window.$ = window.jQuery = require('./node_modules/jquery/dist/jquery.min');
